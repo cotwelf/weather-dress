@@ -1,0 +1,33 @@
+@use '../../variables.scss' as *;
+
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: $spacing-xl 0;
+
+  &__text {
+    font-size: 28rpx;
+    color: $text-hint;
+  }
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-xl 0;
+  gap: $spacing-md;
+
+  &__text {
+    font-size: 28rpx;
+    color: $warning-orange;
+  }
+
+  &__retry {
+    font-size: 28rpx;
+    color: $primary;
+    padding: $spacing-sm $spacing-lg;
+    border: 1rpx solid $primary;
+    border-radius: $radius-sm;
+  }
+}

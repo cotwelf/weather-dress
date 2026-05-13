@@ -1,0 +1,13 @@
+@use './variables.scss' as *;
+
+page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+  background: $bg-color;
+  color: $text-primary;
+  min-height: 100vh;
+}
+
+.container {
+  padding: 24rpx;
+  padding-bottom: 48rpx;
+}

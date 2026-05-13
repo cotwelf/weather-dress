@@ -1,0 +1,58 @@
+@use '../../variables.scss' as *;
+
+.rain-timeline {
+  background: $card-bg;
+  border-radius: $radius-lg;
+  padding: $spacing-md $spacing-lg;
+  margin-bottom: $spacing-md;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+  border-left: 6rpx solid $rain-blue;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-md;
+  }
+
+  &__icon {
+    font-size: 36rpx;
+  }
+
+  &__title {
+    font-size: 30rpx;
+    font-weight: 600;
+    color: $rain-blue;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-sm 0;
+
+    & + & {
+      border-top: 1rpx solid $border-color;
+    }
+  }
+
+  &__bar {
+    width: 8rpx;
+    height: 40rpx;
+    background: $rain-blue;
+    border-radius: 4rpx;
+    flex-shrink: 0;
+  }
+
+  &__time {
+    font-size: 28rpx;
+    color: $text-primary;
+    font-weight: 500;
+    flex: 1;
+  }
+
+  &__prob {
+    font-size: 24rpx;
+    color: $text-secondary;
+  }
+}
