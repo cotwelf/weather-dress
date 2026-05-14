@@ -1,33 +1,125 @@
 @use '../../variables.scss' as *;
 
-.loading {
-  display: flex;
-  justify-content: center;
-  padding: $spacing-xl 0;
+.container {
+  position: relative;
+  min-height: 100vh;
+}
 
-  &__text {
-    font-size: 28rpx;
-    color: $text-hint;
+.body-layers {
+  position: fixed;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  width: $body-width + 20rpx;
+  height: $body-height + 20rpx;
+  z-index: 0;
+
+  .body-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $body-width;
+    height: $body-height;
+    margin: 10rpx;
+  }
+
+  .clothing-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    &.skirt {
+      top: 56%;
+      left: 14%;
+      width: $skirt-width;
+      height: $skirt-height;
+    }
+
+    &.tshirt {
+      top: 29%;
+      left: 14%;
+      width: $tshirt-width;
+      height: $tshirt-height;
+    }
+
+    &.jacket {
+      top: 26%;
+      left: 3%;
+      width: $jacket-width;
+      height: $jacket-height;
+    }
+
+    &.pants {
+      top: 54%;
+      left: 17%;
+      width: $pants-width;
+      height: $pants-height;
+    }
   }
 }
 
+.current-feel {
+  position: fixed;
+  top: 40rpx;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 80rpx;
+  z-index: 2;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 16rpx 24rpx;
+}
+
+.hint {
+  font-size: 24rpx;
+  color: $primary-color;
+  display: block;
+  text-align: center;
+  margin-top: $spacing-md;
+}
+
 .error {
+  color: $primary-color;
+}
+
+.retry {
+  color: $primary-color;
+  margin-top: $spacing-sm;
+}
+
+.weather-text {
+  margin-top: $spacing-md;
+  padding: 16rpx 20rpx;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: $radius-sm;
+
+  .line {
+    display: block;
+    font-size: 24rpx;
+    color: $primary-color;
+    line-height: 1.8;
+  }
+
+  .tip {
+    color: $primary-color;
+    font-size: 22rpx;
+  }
+}
+
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rpx 20rpx;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  padding: $spacing-xl 0;
-  gap: $spacing-md;
-
-  &__text {
-    font-size: 28rpx;
-    color: $warning-orange;
-  }
-
-  &__retry {
-    font-size: 28rpx;
-    color: $primary;
-    padding: $spacing-sm $spacing-lg;
-    border: 1rpx solid $primary;
-    border-radius: $radius-sm;
-  }
+  z-index: 2;
+  box-sizing: border-box;
+  font-size: 36rpx;
 }

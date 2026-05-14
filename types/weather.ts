@@ -68,6 +68,7 @@ export interface RainPeriod {
 export interface ClothingAdvice {
   clothing: string
   clothingIcon: string
+  items: string[]
   tips: string[]
 }
 

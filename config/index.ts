@@ -17,7 +17,7 @@ export default defineConfig<'vite'>(async (merge, { command, mode }) => {
     outputRoot: 'dist',
     plugins: ['@tarojs/plugin-html'],
     defineConstants: {},
-    copy: { patterns: [], options: {} },
+    copy: { patterns: [{ from: 'src/fonts/', to: 'dist/fonts/' }], options: {} },
     framework: 'react',
     compiler: 'vite',
     mini: {

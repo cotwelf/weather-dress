@@ -1,17 +1,30 @@
 import { useState, useEffect, useCallback } from 'react'
-import { View, Text } from '@tarojs/components'
-import Taro from '@tarojs/taro'
+import { View, Text, Image } from '@tarojs/components'
 import CityPicker from '../../components/city-picker'
-import WeatherCard from '../../components/weather-card'
-import RainTimeline from '../../components/rain-timeline'
-import ClothingAdvice from '../../components/clothing-advice'
+import ClothingItem, { ClothingItemProps, TagPos, getClothingItems } from '../../components/clothing-item'
 import { fetchWeather } from '../../services/weather'
-import { getWeatherInfo } from '../../utils/weather'
-import { getClothingAdvice, findRainPeriods } from '../../utils/clothing'
-import type { CityResult, WeatherDisplayData } from '../../../types/weather'
+import { getClothingAdvice } from '../../utils/clothing'
+import type { CityResult } from '../../../types/weather'
+import bodyImg from '../../../assets/images/body.png'
 import './index.scss'
 
-// 默认城市：上海
+// 衣物位置配置
+const ITEM_POS_MAP: Record<string, Partial<ClothingItemProps>> = {
+  '短袖': { className: 'tshirt', tagPosition: TagPos.TopLeft, offsetX: 30 },
+  '短T恤': { className: 'tshirt', tagPosition: TagPos.TopLeft },
+  'T恤': { className: 'tshirt', tagPosition: TagPos.TopLeft },
+  '卫衣': { className: 'tshirt', tagPosition: TagPos.TopLeft },
+  '薄外套': { className: 'jacket', tagPosition: TagPos.TopRight },
+  '厚外套': { className: 'jacket', tagPosition: TagPos.TopRight },
+  '外套': { className: 'jacket', tagPosition: TagPos.TopRight },
+  '羽绒服': { className: 'jacket', tagPosition: TagPos.TopRight },
+  '短裙': { className: 'skirt', tagPosition: TagPos.BottomLeft },
+  '短裤': { className: 'skirt', tagPosition: TagPos.BottomLeft },
+  '长裤': { className: 'pants', tagPosition: TagPos.BottomRight },
+  '秋裤': { className: 'pants', tagPosition: TagPos.BottomRight },
+  '加绒裤': { className: 'pants', tagPosition: TagPos.BottomRight },
+}
+
 const DEFAULT_CITY: CityResult = {
   id: 101020100,
   name: '上海',
@@ -24,7 +37,14 @@ const DEFAULT_CITY: CityResult = {
 
 export default function Index() {
   const [city, setCity] = useState<CityResult>(DEFAULT_CITY)
-  const [weather, setWeather] = useState<WeatherDisplayData | null>(null)
+  const [info, setInfo] = useState<{
+    tempMax: number
+    tempMin: number
+    current: number
+    feelsLike: number
+    advice: string
+    tips: string[]
+  } | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
@@ -33,28 +53,20 @@ export default function Index() {
     setError('')
     try {
       const data = await fetchWeather(targetCity.latitude, targetCity.longitude)
-      const weatherInfo = getWeatherInfo(data.current.weather_code)
       const dailyCode = data.daily.weather_code[0] || data.current.weather_code
-      const rainPeriods = findRainPeriods(data.hourly)
       const clothing = getClothingAdvice(
         data.daily.temperature_2m_max[0],
         data.daily.temperature_2m_min[0],
         dailyCode,
         data.current.wind_speed_10m
       )
-
-      setWeather({
-        cityName: targetCity.name,
-        currentTemp: data.current.temperature_2m,
-        feelsLike: data.current.apparent_temperature,
-        weatherText: weatherInfo.text,
-        weatherIcon: weatherInfo.icon,
-        tempMax: data.daily.temperature_2m_max[0],
-        tempMin: data.daily.temperature_2m_min[0],
-        humidity: data.current.relative_humidity_2m,
-        windSpeed: data.current.wind_speed_10m,
-        rainPeriods,
-        clothing,
+      setInfo({
+        tempMax: Math.round(data.daily.temperature_2m_max[0]),
+        tempMin: Math.round(data.daily.temperature_2m_min[0]),
+        current: Math.round(data.current.temperature_2m),
+        feelsLike: Math.round(data.current.apparent_temperature),
+        advice: clothing.clothing,
+        tips: clothing.tips,
       })
     } catch {
       setError('获取天气数据失败，请稍后重试')
@@ -74,27 +86,53 @@ export default function Index() {
 
   return (
     <View className='container'>
-      <CityPicker currentCity={city.name} onSelect={handleCitySelect} />
+      <View className='body-layers'>
+        <Image className='body-img' src={bodyImg} mode='aspectFill' />
+        {info && !loading && getClothingItems(info.feelsLike).map((item) => {
+          const pos = ITEM_POS_MAP[item]
+          if (!pos) return null
+          return (
+            <ClothingItem
+              key={item}
+              name={item}
+              {...pos}
+            />
+          )
+        })}
+      </View>
 
-      {loading && (
-        <View className='loading'>
-          <Text className='loading__text'>加载天气数据中...</Text>
-        </View>
-      )}
-
-      {error && (
-        <View className='error'>
-          <Text className='error__text'>{error}</Text>
-          <Text className='error__retry' onClick={() => loadWeather(city)}>点击重试</Text>
-        </View>
-      )}
-
-      {weather && !loading && (
+      {info && !loading && (
         <>
-          <WeatherCard data={weather} />
-          <RainTimeline periods={weather.rainPeriods} />
-          <ClothingAdvice advice={weather.clothing} hasRain={weather.rainPeriods.length > 0} />
+          <CityPicker currentCity={city.name} onSelect={handleCitySelect} />
+          <Text className='current-feel'>{`${info.feelsLike}℃`}</Text>
         </>
+      )}
+
+      <View className='content'>
+
+        {loading && <Text className='hint'>加载中...</Text>}
+
+        {error && (
+          <View>
+            <Text className='hint error'>{error}</Text>
+            <Text className='hint retry' onClick={() => loadWeather(city)}>点击重试</Text>
+          </View>
+        )}
+
+        {info && !loading && (
+          <View className='weather-text'>
+            {info.tips.map((tip, i) => (
+              <Text className='line tip' key={i}>⚠ {tip}</Text>
+            ))}
+          </View>
+        )}
+      </View>
+
+      {info && !loading && (
+        <View className='bottom-bar'>
+          <Text className='temp-range'>{`${info.tempMin}℃~${info.tempMax}℃`}</Text>
+          <Text className='date-text'>{`${new Date().getFullYear()}.${String(new Date().getMonth() + 1).padStart(2, '0')}.${String(new Date().getDate()).padStart(2, '0')}`}</Text>
+        </View>
       )}
     </View>
   )

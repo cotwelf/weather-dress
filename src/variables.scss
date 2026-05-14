@@ -1,15 +1,7 @@
+@use 'sass:math';
+
 // Colors
-$bg-color: #f5f7fa;
-$card-bg: #ffffff;
-$primary: #4A90D9;
-$primary-light: #EBF3FC;
-$text-primary: #1a1a1a;
-$text-secondary: #666666;
-$text-hint: #999999;
-$rain-blue: #5B9BD5;
-$warning-orange: #F5A623;
-$success-green: #4CAF50;
-$border-color: #e8e8e8;
+$primary-color: #1d1615;
 
 // Spacing
 $spacing-xs: 8rpx;
@@ -22,3 +14,17 @@ $spacing-xl: 48rpx;
 $radius-sm: 12rpx;
 $radius-md: 16rpx;
 $radius-lg: 24rpx;
+
+// 图片大小
+$body-width: math.div(336rpx, 2);
+$body-height: math.div(819rpx, 2);
+$jacket-width: math.div(354rpx, 2);
+$jacket-height: math.div(332rpx, 2);
+$skirt-width: math.div(276rpx, 2);
+$skirt-height: math.div(203rpx, 2);
+$tshirt-width: math.div(272rpx, 2);
+$tshirt-height: math.div(240rpx, 2);
+$line-width: math.div(113rpx, 2);
+$line-height: math.div(47rpx, 2);
+$pants-width: math.div(234rpx, 2);
+$pants-height: math.div(361rpx, 2);

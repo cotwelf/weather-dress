@@ -10,9 +10,9 @@ interface Props {
 }
 
 export default function CityPicker({ currentCity, onSelect }: Props) {
+  const [visible, setVisible] = useState(false)
   const [keyword, setKeyword] = useState('')
   const [results, setResults] = useState<CityResult[]>([])
-  const [expanded, setExpanded] = useState(false)
   const [loading, setLoading] = useState(false)
 
   const handleSearch = useCallback(async (value: string) => {
@@ -36,46 +36,57 @@ export default function CityPicker({ currentCity, onSelect }: Props) {
     onSelect(city)
     setKeyword('')
     setResults([])
-    setExpanded(false)
+    setVisible(false)
   }, [onSelect])
 
+  const handleClose = useCallback(() => {
+    setKeyword('')
+    setResults([])
+    setVisible(false)
+  }, [])
+
   return (
-    <View className='city-picker'>
-      <View className='city-picker__header' onClick={() => setExpanded(!expanded)}>
-        <Text className='city-picker__icon'>📍</Text>
-        <Text className='city-picker__city'>{currentCity}</Text>
-        <Text className='city-picker__arrow'>{expanded ? '▲' : '▼'}</Text>
-      </View>
-      {expanded && (
-        <View className='city-picker__panel'>
-          <Input
-            className='city-picker__input'
-            placeholder='输入城市名称搜索...'
-            value={keyword}
-            onInput={(e) => handleSearch(e.detail.value)}
-          />
-          {loading && <Text className='city-picker__hint'>搜索中...</Text>}
-          {!loading && results.length === 0 && keyword.length > 0 && (
-            <Text className='city-picker__hint'>未找到相关城市</Text>
-          )}
-          {results.length > 0 && (
-            <ScrollView className='city-picker__list' scrollY>
-              {results.map((city) => (
-                <View
-                  key={city.id}
-                  className='city-picker__item'
-                  onClick={() => handleSelect(city)}
-                >
-                  <Text className='city-picker__name'>{city.name}</Text>
-                  <Text className='city-picker__region'>
-                    {city.admin1 ? `${city.admin1}, ` : ''}{city.country}
-                  </Text>
-                </View>
-              ))}
-            </ScrollView>
-          )}
+    <>
+      <Text className='city-trigger' onClick={() => setVisible(true)}>{currentCity}</Text>
+
+      {visible && (
+        <View className='city-modal'>
+          <View className='city-modal-mask' onClick={handleClose} />
+          <View className='city-modal-content'>
+            <View className='city-modal-header'>
+              <Text className='city-modal-title'>选择城市</Text>
+              <Text className='city-modal-close' onClick={handleClose}>✕</Text>
+            </View>
+            <Input
+              className='city-modal-input'
+              placeholder='输入城市名称搜索...'
+              value={keyword}
+              focus
+              onInput={(e) => handleSearch(e.detail.value)}
+            />
+            {loading && <Text className='city-modal-hint'>搜索中...</Text>}
+            {!loading && results.length === 0 && keyword.length > 0 && (
+              <Text className='city-modal-hint'>未找到相关城市</Text>
+            )}
+            {results.length > 0 && (
+              <ScrollView className='city-modal-list' scrollY>
+                {results.map((city) => (
+                  <View
+                    key={city.id}
+                    className='city-modal-item'
+                    onClick={() => handleSelect(city)}
+                  >
+                    <Text className='city-modal-item-name'>{city.name}</Text>
+                    <Text className='city-modal-item-region'>
+                      {city.admin1 ? `${city.admin1}, ` : ''}{city.country}
+                    </Text>
+                  </View>
+                ))}
+              </ScrollView>
+            )}
+          </View>
         </View>
       )}
-    </View>
+    </>
   )
 }

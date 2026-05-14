@@ -17,6 +17,13 @@ export default function ClothingAdvice({ advice, hasRain }: Props) {
           <Text className='clothing-advice__text'>{advice.clothing}</Text>
         </View>
       </View>
+      {advice.items.length > 0 && (
+        <View className='clothing-advice__items'>
+          {advice.items.map((item, idx) => (
+            <Text key={idx} className='clothing-advice__item-tag'>{item}</Text>
+          ))}
+        </View>
+      )}
       {advice.tips.length > 0 && (
         <View className='clothing-advice__tips'>
           {advice.tips.map((tip, idx) => (

@@ -1,7 +1,7 @@
 @use '../../variables.scss' as *;
 
 .clothing-advice {
-  background: $card-bg;
+  background: $primary-color;
   border-radius: $radius-lg;
   padding: $spacing-lg;
   margin-bottom: $spacing-md;
@@ -26,7 +26,7 @@
   &__title {
     display: block;
     font-size: 24rpx;
-    color: $text-hint;
+    color: $primary-color;
     margin-bottom: $spacing-xs;
   }
 
@@ -34,12 +34,27 @@
     display: block;
     font-size: 32rpx;
     font-weight: 600;
-    color: $text-primary;
+    color: $primary-color;
+  }
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-md;
+  }
+
+  &__item-tag {
+    font-size: 24rpx;
+    color: $primary-color;
+    background: $primary-color;
+    padding: $spacing-xs $spacing-md;
+    border-radius: 20rpx;
   }
 
   &__tips {
     padding-top: $spacing-md;
-    border-top: 1rpx solid $border-color;
+    border-top: 1rpx solid $primary-color;
   }
 
   &__tip {
@@ -56,6 +71,6 @@
 
   &__tip-text {
     font-size: 26rpx;
-    color: $text-secondary;
+    color: $primary-color;
   }
 }
