@@ -20,7 +20,7 @@
   }
 
   &__title {
-    font-size: 30rpx;
+    font-size: $font-sm;
     font-weight: 600;
     color: $primary-color;
   }
@@ -45,14 +45,14 @@
   }
 
   &__time {
-    font-size: 28rpx;
+    font-size: $font-sm;
     color: $primary-color;
     font-weight: 500;
     flex: 1;
   }
 
   &__prob {
-    font-size: 24rpx;
+    font-size: $font-xs;
     color: $primary-color;
   }
 }

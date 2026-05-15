@@ -6,7 +6,7 @@
   right: 0;
   writing-mode: tb;
   padding: 16rpx 0;
-  font-size: 32rpx;
+  font-size: $font-sm;
 }
 
 .city-modal {
@@ -48,7 +48,7 @@
   }
 
   &-title {
-    font-size: 32rpx;
+    font-size: $font-sm;
     font-weight: 600;
     color: $primary-color;
   }
@@ -65,7 +65,7 @@
     border: 1rpx solid $primary-color;
     border-radius: $radius-sm;
     padding: 0 $spacing-md;
-    font-size: 28rpx;
+    font-size: $font-sm;
     box-sizing: border-box;
   }
 
@@ -73,7 +73,7 @@
     display: block;
     text-align: center;
     color: $primary-color;
-    font-size: 24rpx;
+    font-size: $font-xs;
     padding: $spacing-md 0;
   }
 
@@ -94,13 +94,13 @@
     }
 
     &-name {
-      font-size: 28rpx;
+      font-size: $font-sm;
       color: $primary-color;
       font-weight: 500;
     }
 
     &-region {
-      font-size: 24rpx;
+      font-size: $font-xs;
       color: $primary-color;
     }
   }
