@@ -2,7 +2,6 @@
 
 .container {
   position: relative;
-  min-height: 100vh;
 }
 
 .body-layers {
@@ -54,6 +53,34 @@
       left: 17%;
       width: $pants-width;
       height: $pants-height;
+    }
+
+    &.vest {
+      top: 29%;
+      left: 14%;
+      width: $vest-width;
+      height: $vest-height;
+    }
+
+    &.hoodie {
+      top: 27%;
+      left: 3%;
+      width: $hoodie-width;
+      height: $hoodie-height;
+    }
+
+    &.light-jacket {
+      top: 28%;
+      left: 3%;
+      width: $light-jacket-width;
+      height: $light-jacket-height;
+    }
+
+    &.short-pants {
+      top: 54%;
+      left: 17%;
+      width: $short-pants-width;
+      height: $short-pants-height;
     }
   }
 }

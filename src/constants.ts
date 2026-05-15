@@ -1,10 +1,10 @@
 /** 穿衣建议：按温度区间定义 */
 export const CLOTHING_RULES = [
-  { minTemp: 30, text: '短袖短裤，清凉透气', icon: '👕', items: ['短T恤', '短裤', '凉鞋'] },
-  { minTemp: 25, text: 'T恤/薄衬衫，舒适为主', icon: '👕', items: ['短袖', '短裤', '单鞋'] },
-  { minTemp: 20, text: '薄长袖/卫衣，早晚可备薄外套', icon: '🧥', items: ['薄外套', '长裤', '运动鞋'] },
-  // { minTemp: 20, text: '薄长袖/卫衣，早晚可备薄外套', icon: '🧥', items: ['卫衣', '薄外套', '长裤', '运动鞋'] },
-  { minTemp: 15, text: '外套/卫衣，注意保暖', icon: '🧥', items: ['卫衣', '薄外套', '长裤', '运动鞋'] },
+  { minTemp: 35, text: '吊带短裤，清凉透气', icon: '👕', items: ['吊带', '短裙', '凉鞋'] },
+  { minTemp: 30, text: '短袖短裤，清凉透气', icon: '👕', items: ['短裤', 'T恤', '凉鞋'] },
+  { minTemp: 25, text: 'T恤/薄衬衫，舒适为主', icon: '👕', items: ['短裤', '短袖', '单鞋'] },
+  { minTemp: 20, text: '薄长袖/卫衣，早晚可备薄外套', icon: '🧥', items: ['长裤', 'T恤', '薄外套', '运动鞋'] },
+  { minTemp: 15, text: '外套/卫衣，注意保暖', icon: '🧥', items: ['长裤', '卫衣', '薄外套', '运动鞋'] },
   { minTemp: 10, text: '厚外套/毛衣，注意保暖', icon: '🧶', items: ['厚外套', '秋衣', '长裤', '运动鞋'] },
   { minTemp: 0, text: '棉衣/羽绒服，做好防寒', icon: '🧥', items: ['羽绒服', '秋衣', '秋裤', '加绒裤', '靴子'] },
   { minTemp: -Infinity, text: '厚羽绒服/棉服，全副武装', icon: '🧤', items: ['羽绒服', '秋衣', '秋裤', '加绒裤', '靴子'] },

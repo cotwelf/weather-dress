@@ -10,19 +10,20 @@ import './index.scss'
 
 // 衣物位置配置
 const ITEM_POS_MAP: Record<string, Partial<ClothingItemProps>> = {
-  '短袖': { className: 'tshirt', tagPosition: TagPos.TopLeft, offsetX: 30 },
-  '短T恤': { className: 'tshirt', tagPosition: TagPos.TopLeft },
-  'T恤': { className: 'tshirt', tagPosition: TagPos.TopLeft },
-  '卫衣': { className: 'tshirt', tagPosition: TagPos.TopLeft },
-  '薄外套': { className: 'jacket', tagPosition: TagPos.TopRight },
-  '厚外套': { className: 'jacket', tagPosition: TagPos.TopRight },
-  '外套': { className: 'jacket', tagPosition: TagPos.TopRight },
-  '羽绒服': { className: 'jacket', tagPosition: TagPos.TopRight },
-  '短裙': { className: 'skirt', tagPosition: TagPos.BottomLeft },
-  '短裤': { className: 'skirt', tagPosition: TagPos.BottomLeft },
-  '长裤': { className: 'pants', tagPosition: TagPos.BottomRight },
-  '秋裤': { className: 'pants', tagPosition: TagPos.BottomRight },
-  '加绒裤': { className: 'pants', tagPosition: TagPos.BottomRight },
+  '短袖': { className: 'tshirt', tagPosition: TagPos.Left, offsetX: -90, offsetY: -5, rotate: 20  },
+  '吊带': { className: 'vest', tagPosition: TagPos.Left },
+  '短裙': { className: 'skirt', tagPosition: TagPos.Left },
+  '短T恤': { className: 'tshirt', tagPosition: TagPos.Left },
+  'T恤': { className: 'tshirt', tagPosition: TagPos.Left, offsetX: -90, offsetY: -5, rotate: 20 },
+  '卫衣': { className: 'hoodie', tagPosition: TagPos.Left, offsetX: -76, offsetY: 14, rotate: 20 },
+  '薄外套': { className: 'light-jacket', tagPosition: TagPos.Right, offsetX: 76, offsetY: 10, rotate: -20 },
+  '厚外套': { className: 'jacket', tagPosition: TagPos.Right },
+  '外套': { className: 'jacket', tagPosition: TagPos.Right },
+  '羽绒服': { className: 'jacket', tagPosition: TagPos.Right },
+  '短裤': { className: 'short-pants', tagPosition: TagPos.Right, offsetX: 90, offsetY: 120, rotate: 20 },
+  '长裤': { className: 'pants', tagPosition: TagPos.Right, offsetX: 94, offsetY: 150, rotate: 20  },
+  '秋裤': { className: 'pants', tagPosition: TagPos.Right },
+  '加绒裤': { className: 'pants', tagPosition: TagPos.Right },
 }
 
 const DEFAULT_CITY: CityResult = {
