@@ -2,7 +2,9 @@
 
 ## [Unreleased]
 
-- 2026-05-28: 新增 Claude Code 项目配置（CLAUDE.md + .claude/）
+## 2026-05-28
+
+- 新增 Claude Code 项目配置（CLAUDE.md + .claude/）
 - 城市选择弹窗优化
 - 页面布局调整
 
