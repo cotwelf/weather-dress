@@ -24,5 +24,7 @@ user_invocable: true
      - 🐞 Bug 修复
    - **不要写版本号，只用日期作为标题**
    - **不要修改或删除已有条目**
-2. **提交**：将所有变更（含 CHANGELOG）提交，commit message 与 CHANGELOG 描述保持一致
+2. **提交**：
+   - commit message 与 CHANGELOG 描述保持一致，控制在 30 个字以内
+   - 如果改动涉及不同功能，分开提交并分别推送
 3. **推送到远程**：执行 `git push`
