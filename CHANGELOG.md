@@ -1,7 +1,5 @@
 # Changelog
 
-## [Unreleased]
-
 ## 2026-05-28
 
 - 🆕 新增 Claude Code 项目配置（CLAUDE.md + .claude/）
