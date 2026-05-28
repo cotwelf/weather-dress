@@ -101,25 +101,20 @@ export default function Index() {
           )
         })}
       </View>
-
       {info && !loading && (
         <>
           <CityPicker currentCity={city.name} onSelect={handleCitySelect} />
           <Text className='current-feel'>{`${info.feelsLike}℃`}</Text>
         </>
       )}
-
+      {loading && <Text className='loading'>加载中...</Text>}
       <View className='content'>
-
-        {loading && <Text className='hint'>加载中...</Text>}
-
         {error && (
-          <View>
+          <>
             <Text className='hint error'>{error}</Text>
             <Text className='hint retry' onClick={() => loadWeather(city)}>点击重试</Text>
-          </View>
+          </>
         )}
-
         {info && !loading && (
           <View className='weather-text'>
             {info.tips.map((tip, i) => (
@@ -132,6 +127,7 @@ export default function Index() {
       {info && !loading && (
         <View className='bottom-bar'>
           <Text className='temp-range'>{`${info.tempMin}℃~${info.tempMax}℃`}</Text>
+          <Text className='separator'>|</Text>
           <Text className='date-text'>{`${new Date().getFullYear()}.${String(new Date().getMonth() + 1).padStart(2, '0')}.${String(new Date().getDate()).padStart(2, '0')}`}</Text>
         </View>
       )}

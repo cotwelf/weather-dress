@@ -54,12 +54,11 @@ export default function CityPicker({ currentCity, onSelect }: Props) {
           <View className='city-modal-mask' onClick={handleClose} />
           <View className='city-modal-content'>
             <View className='city-modal-header'>
-              <Text className='city-modal-title'>选择城市</Text>
               <Text className='city-modal-close' onClick={handleClose}>✕</Text>
             </View>
             <Input
               className='city-modal-input'
-              placeholder='输入城市名称搜索...'
+              placeholder='搜索城市...'
               value={keyword}
               focus
               onInput={(e) => handleSearch(e.detail.value)}

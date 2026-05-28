@@ -85,20 +85,14 @@
   }
 }
 
-.current-feel {
+.current-feel, .loading {
   position: fixed;
-  top: 40rpx;
+  top: 70rpx;
   left: 0;
   width: 100%;
   text-align: center;
   font-size: $font-feel;
   z-index: 2;
-}
-
-.content {
-  position: relative;
-  z-index: 1;
-  padding: 16rpx 24rpx;
 }
 
 .hint {
@@ -119,16 +113,17 @@
 }
 
 .weather-text {
-  margin-top: $spacing-md;
-  padding: 16rpx 20rpx;
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: $radius-sm;
+  padding: 8rpx 20rpx 0;
+  height: 70rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 
   .line {
     display: block;
     font-size: $font-xs;
     color: $primary-color;
-    line-height: 1.8;
+    line-height: 1.2;
   }
 
   .tip {
@@ -149,4 +144,8 @@
   z-index: 2;
   box-sizing: border-box;
   font-size: $font-sm;
+
+  .separator {
+    opacity: 0.3;
+  }
 }
