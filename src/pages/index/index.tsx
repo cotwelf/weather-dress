@@ -11,12 +11,12 @@ import './index.scss'
 // 衣物位置配置
 const ITEM_POS_MAP: Record<string, Partial<ClothingItemProps>> = {
   '短袖': { className: 'tshirt', tagPosition: TagPos.Left, offsetX: -90, offsetY: -5, rotate: 20  },
-  '吊带': { className: 'vest', tagPosition: TagPos.Left },
-  '短裙': { className: 'skirt', tagPosition: TagPos.Left },
-  '短T恤': { className: 'tshirt', tagPosition: TagPos.Left },
+  '吊带': { className: 'vest', tagPosition: TagPos.Left, offsetX: -96, offsetY: -5, rotate: 20  },
+  '短T恤': { className: 'tshirt', tagPosition: TagPos.Left, offsetX: -96, offsetY: -5, rotate: 20 },
   'T恤': { className: 'tshirt', tagPosition: TagPos.Left, offsetX: -90, offsetY: -5, rotate: 20 },
   '卫衣': { className: 'hoodie', tagPosition: TagPos.Left, offsetX: -76, offsetY: 14, rotate: 20 },
   '薄外套': { className: 'light-jacket', tagPosition: TagPos.Right, offsetX: 76, offsetY: 10, rotate: -20 },
+  '短裙': { className: 'skirt', tagPosition: TagPos.Right, offsetX: 76, offsetY: 40, rotate: -20 },
   '厚外套': { className: 'jacket', tagPosition: TagPos.Right },
   '外套': { className: 'jacket', tagPosition: TagPos.Right },
   '羽绒服': { className: 'jacket', tagPosition: TagPos.Right },
