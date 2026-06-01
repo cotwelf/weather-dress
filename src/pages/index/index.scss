@@ -2,10 +2,14 @@
 
 .container {
   position: relative;
+  width: 100%;
+  aspect-ratio: 400 / 700;
+  max-height: 100%;
+  margin: 0 auto;
 }
 
 .body-layers {
-  position: fixed;
+  position: absolute;
   top: 46%;
   left: 50%;
   transform: translate(-50%, -30%);
@@ -28,7 +32,7 @@
     left: 0;
 
     &.skirt {
-      top: 56%;
+      top: 55%;
       left: 14%;
       width: $skirt-width;
       height: $skirt-height;
@@ -86,7 +90,7 @@
 }
 
 .current-feel, .loading {
-  position: fixed;
+  position: absolute;
   top: 70rpx;
   left: 0;
   width: 100%;
@@ -133,7 +137,7 @@
 }
 
 .bottom-bar {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-06-01
+
+- ⚡️ 非移动端页面宽高比限制及居中适配
+- ⚡️ 页面尺寸变化时自动限制字号上限
+- ⚡️ 布局定位 fixed → absolute
+
 ## 2026-05-28
 
 - 🆕 新增 Claude Code 项目配置（CLAUDE.md + .claude/）
